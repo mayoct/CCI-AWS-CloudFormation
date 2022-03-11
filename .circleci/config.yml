@@ -10,6 +10,7 @@ workflows:
           template: create_vpc.yaml
       - cloudformation/changeset:
           stack_name: vpc
+          template: create_vpc.yaml
           requires:
             - cloudformation/lint
       - approval:
@@ -20,3 +21,4 @@ workflows:
           requires:
             - approval
           stack_name: vpc
+          template: create_vpc.yaml
