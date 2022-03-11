@@ -1,0 +1,22 @@
+version: 2.1
+
+orbs:
+  cloudformation:frameio/cloudformation@0.25.1
+
+workflows:
+  deploy:
+    jobs:
+      - cloudformation/lint:
+          template: create_vpc.yaml
+      - cloudformation/changeset:
+          stack_name: vpc
+          requires:
+            - cloudformation/lint
+      - approval:
+          requires:
+            - cloudformation/changeset
+          type: approval
+      - cloudformation/deploy:
+          requires:
+            - approval
+          stack_name: vpc
