@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  cloudformation:frameio/cloudformation@0.25.1
+  cloudformation: frameio/cloudformation@0.25.1
 
 workflows:
   deploy:
