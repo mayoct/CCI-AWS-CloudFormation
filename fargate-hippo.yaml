@@ -9,11 +9,6 @@ Metadata:
           default: "Project Name Prefix"
         Parameters:
           - ProjectName
-#      - Label:
-#          default: "InternetALB Configuration"
-#        Parameters:
-#          - InternetALBName
-#          - TargetGroupName
       - Label:
           default: "Fargate for ECS Configuration"
         Parameters:
@@ -28,27 +23,10 @@ Metadata:
       - Label:
           default: "Network Configuration"
         Parameters:
-#          - VpcId
-#          - ALBSecurityGroupId
-#          - ALBSubnetId1
-#          - ALBSubnetId2
           - ECSSecurityGroupId
           - ECSSubnetId1
-#          - ECSSubnetId2
-#      - Label:
-#          default: "Scaling Configuration"
-#        Parameters:
-#          - ServiceScaleEvaluationPeriods
-#          - ServiceCpuScaleOutThreshold
-#          - ServiceCpuScaleInThreshold
-#          - TaskMinContainerCount
-#          - TaskMaxContainerCount
 
     ParameterLabels:
-#      InternetALBName:
-#        default: "InternetALBName"
-#      TargetGroupName:
-#        default: "TargetGroupName"
       ECSClusterName:
         default: "ECSClusterName"
       ECSTaskName:
@@ -292,20 +270,20 @@ Resources:
 # ------------------------------------------------------------ #
 # ECS Task Execution Role
 # ------------------------------------------------------------ #
-#  ECSTaskExecutionRole:
-#    Type: AWS::IAM::Role
-#    Properties:
-#      RoleName: !Sub "${ProjectName}-ECSTaskExecutionRolePolicy"
-#      Path: /
-#      AssumeRolePolicyDocument:
-#        Version: 2012-10-17
-#        Statement:
-#          - Effect: Allow
-#            Principal:
-#              Service: ecs-tasks.amazonaws.com
-#            Action: sts:AssumeRole
-#      ManagedPolicyArns:
-#        - arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy
+  ECSTaskExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub "${ProjectName}-ECSTaskExecutionRolePolicy"
+      Path: /
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: ecs-tasks.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy
 
 # ------------------------------------------------------------ #
 # ECS Task Definition
@@ -317,7 +295,7 @@ Resources:
         CpuArchitecture: !Ref ECSTaskCPUArchitecture
         OperatingSystemFamily: !Ref ECSTaskOperatingSystemFamily
       Cpu: !Ref ECSTaskCPUUnit
-#      ExecutionRoleArn: !GetAtt ECSTaskExecutionRole.Arn
+      ExecutionRoleArn: !GetAtt ECSTaskExecutionRole.Arn
       Family: !Sub "${ProjectName}-${ECSTaskName}"
       Memory: !Ref ECSTaskMemory
       NetworkMode: awsvpc
