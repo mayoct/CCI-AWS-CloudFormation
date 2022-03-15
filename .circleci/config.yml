@@ -7,10 +7,10 @@ workflows:
   deploy:
     jobs:
       - cloudformation/lint:
-          template: create_vpc.yaml
+          template: fargate-hippo.yaml
       - cloudformation/changeset:
           stack_name: vpc
-          template: create_vpc.yaml
+          template: fargate-hippo.yaml
           requires:
             - cloudformation/lint
       - approval:
@@ -21,4 +21,4 @@ workflows:
           requires:
             - approval
           stack_name: vpc
-          template: create_vpc.yaml
+          template: fargate-hippo.yaml
