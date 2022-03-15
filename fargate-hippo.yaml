@@ -89,11 +89,13 @@ Parameters:
   ALBSubnetId1:
     Description: "ALB Subnet 1st"
     Type: AWS::EC2::Subnet::Id
+    Default: subnet-098472e4ea97febc4
 
 #ALBSubnet2
   ALBSubnetId2:
     Description: "ALB Subnet 2nd"
     Type: AWS::EC2::Subnet::Id
+    Default: subnet-0984d76f18437a972
 
 #ECSSecurity Group
   ECSSecurityGroupId:
