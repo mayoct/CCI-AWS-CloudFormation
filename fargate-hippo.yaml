@@ -75,10 +75,10 @@ Parameters:
     Type: String
 
 #VPCID
-  VpcId:
-    Description: "VPC ID"
-    Type: AWS::EC2::VPC::Id
-    Default: vpc-03e2a61be0aa31d54
+#  VpcId:
+#    Description: "VPC ID"
+#    Type: AWS::EC2::VPC::Id
+#    Default: vpc-03e2a61be0aa31d54
 
 #ALBSecurity Group
 #  ALBSecurityGroupId:
