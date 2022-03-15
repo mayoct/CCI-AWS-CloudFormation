@@ -78,10 +78,12 @@ Parameters:
   VpcId:
     Description: "VPC ID"
     Type: AWS::EC2::VPC::Id
+    Default: vpc-017f9db8f7a565943
 
 #ALBSecurity Group
   ALBSecurityGroupId:
     Type: AWS::EC2::SecurityGroup::Id
+    Default: sg-004e57419010e0a66
 
 #ALBSubnet1
   ALBSubnetId1:
@@ -96,16 +98,19 @@ Parameters:
 #ECSSecurity Group
   ECSSecurityGroupId:
     Type: AWS::EC2::SecurityGroup::Id
+    Default: sg-05177d7ce95438ac8
 
 #ECSSubnet1
   ECSSubnetId1:
     Description: "ECS Subnet 1st"
     Type: AWS::EC2::Subnet::Id
+    Default: subnet-098472e4ea97febc4
 
 #ECSSubnet2
   ECSSubnetId2:
     Description: "ECS Subnet 2nd"
     Type: AWS::EC2::Subnet::Id
+    Default: subnet-0984d76f18437a972
 
 #InternetALB
   InternetALBName:
