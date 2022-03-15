@@ -22,4 +22,5 @@ workflows:
           requires:
             - approval
           stack_name: vpc
+          args: --capabilities CAPABILITY_NAMED_IAM
           template: fargate-hippo.yaml
