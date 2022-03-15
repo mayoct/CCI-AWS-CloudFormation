@@ -71,7 +71,7 @@ Metadata:
 # ------------------------------------------------------------ #
 Parameters:
   ProjectName:
-    Default: hippo
+    Default: hippo-a
     Type: String
 
 #VPCID
