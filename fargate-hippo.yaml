@@ -308,7 +308,7 @@ Resources:
     Properties:
       RuntimePlatform:
         CpuArchitecture: !Ref ECSTaskCPUArchitecture
-        OperatingSystemFamily: !REF ECSTaskOperatingSystemFamily
+        OperatingSystemFamily: !Ref ECSTaskOperatingSystemFamily
       Cpu: !Ref ECSTaskCPUUnit
       ExecutionRoleArn: !Ref ECSTaskExecutionRole
       Family: !Sub "${ProjectName}-${ECSTaskName}"
