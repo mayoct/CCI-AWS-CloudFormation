@@ -398,7 +398,7 @@ Resources:
       ServiceNamespace: ecs
     DependsOn:
       - ECSService
-      - ServiceAutoScalingRole
+#      - ServiceAutoScalingRole
 
   ServiceScaleOutPolicy:
     Type: AWS::ApplicationAutoScaling::ScalingPolicy
@@ -413,7 +413,7 @@ Resources:
         StepAdjustments:
           - ScalingAdjustment: 1
             MetricIntervalLowerBound: 0
-    DependsOn: ServiceScalingTarget
+#    DependsOn: ServiceScalingTarget
 
   ServiceScaleInPolicy:
     Type: AWS::ApplicationAutoScaling::ScalingPolicy
@@ -428,7 +428,7 @@ Resources:
         StepAdjustments:
           - ScalingAdjustment: -1
             MetricIntervalUpperBound: 0
-    DependsOn: ServiceScalingTarget
+#    DependsOn: ServiceScalingTarget
 
   ServiceScaleOutAlarm:
     Type: AWS::CloudWatch::Alarm
@@ -476,4 +476,4 @@ Resources:
       MetricName: CPUUtilization
     DependsOn:
       - ECSService
-      - ServiceScaleInPolicy
+#      - ServiceScaleInPolicy
