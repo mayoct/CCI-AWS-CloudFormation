@@ -144,6 +144,7 @@ Parameters:
       - WINDOWS_SERVER_2022_CORE
       - WINDOWS_SERVER_2022_FULL
       - WINDOWS_SERVER_20H2_CORE
+    Type: String
     Default: LINUX
 
 #ECSTaskCPUUnit
