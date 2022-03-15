@@ -310,7 +310,7 @@ Resources:
         CpuArchitecture: !Ref ECSTaskCPUArchitecture
         OperatingSystemFamily: !Ref ECSTaskOperatingSystemFamily
       Cpu: !Ref ECSTaskCPUUnit
-      ExecutionRoleArn: !Ref ECSTaskExecutionRole
+      ExecutionRoleArn: !GetAtt ECSTaskExecutionRole.Arn
       Family: !Sub "${ProjectName}-${ECSTaskName}"
       Memory: !Ref ECSTaskMemory
       NetworkMode: awsvpc
