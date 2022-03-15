@@ -71,7 +71,7 @@ Metadata:
 # ------------------------------------------------------------ #
 Parameters:
   ProjectName:
-    Default: kaji-test
+    Default: hippo
     Type: String
 
 #VPCID
@@ -127,6 +127,25 @@ Parameters:
     Type: String
     Default: "task"
 
+#ECSTaskCPUArchitecture
+  ECSTaskCPUArchitecture:
+    AllowedValues: [ ARM64, X86_64 ]
+    Type: String
+    Default: ARM64
+
+#ECSTaskOperatingSystemFamily
+  ECSTaskOperatingSystemFamily:
+    AllowedValues:
+      - LINUX
+      - WINDOWS_SERVER_2004_CORE
+      - WINDOWS_SERVER_2016_FULL
+      - WINDOWS_SERVER_2019_CORE
+      - WINDOWS_SERVER_2019_FULL
+      - WINDOWS_SERVER_2022_CORE
+      - WINDOWS_SERVER_2022_FULL
+      - WINDOWS_SERVER_20H2_CORE
+    Default: LINUX
+
 #ECSTaskCPUUnit
   ECSTaskCPUUnit:
     AllowedValues: [ 256, 512, 1024, 2048, 4096 ]
@@ -147,7 +166,7 @@ Parameters:
 #ECSImageName
   ECSImageName:
     Type: String
-    Default: "xxxxxxxxxxxx.dkr.ecr.ap-northeast-1.amazonaws.com/kaji-test-ecr:latest"
+    Default: "709967797311.dkr.ecr.ap-northeast-1.amazonaws.com/baby-hippo-gram:latest"
 
 #ECSServiceName
   ECSServiceName:
@@ -286,6 +305,9 @@ Resources:
   ECSTaskDefinition:
     Type: "AWS::ECS::TaskDefinition"
     Properties:
+      RuntimePlatform:
+        CpuArchitecture: !Ref ECSTaskCPUArchitecture
+        OperatingSystemFamily: !REF ECSTaskOperatingSystemFamily
       Cpu: !Ref ECSTaskCPUUnit
       ExecutionRoleArn: !Ref ECSTaskExecutionRole
       Family: !Sub "${ProjectName}-${ECSTaskName}"
@@ -410,7 +432,7 @@ Resources:
   ServiceScaleOutAlarm:
     Type: AWS::CloudWatch::Alarm
     Properties:
-      AlarmName: !Sub "${ProjectName}-${ECSServiceName}-ScaleoutAlarm"
+      AlarmName: !Sub "${ProjectName}-${ECSServiceName}-ScaleOutAlarm"
       EvaluationPeriods: !Ref ServiceScaleEvaluationPeriods
       Statistic: Average
       TreatMissingData: notBreaching
