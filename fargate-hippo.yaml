@@ -326,7 +326,7 @@ Resources:
 
 #ContainerDefinitions
       ContainerDefinitions:
-        - Name: !Sub "$(ProjectName}-${ECSContainerName}"
+        - Name: !Sub "${ProjectName}-${ECSContainerName}"
           Image: !Ref ECSImageName
           LogConfiguration:
             LogDriver: awslogs
