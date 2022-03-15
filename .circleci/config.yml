@@ -9,7 +9,7 @@ workflows:
       - cloudformation/lint:
           template: fargate-hippo.yaml
       - cloudformation/changeset:
-          stack_name: vpc
+          stack_name: fargate-hippo
           template: fargate-hippo.yaml
           args: --capabilities CAPABILITY_NAMED_IAM
           requires:
@@ -21,6 +21,6 @@ workflows:
       - cloudformation/deploy:
           requires:
             - approval
-          stack_name: vpc
+          stack_name: fargate-hippo
           args: --capabilities CAPABILITY_NAMED_IAM
           template: fargate-hippo.yaml
